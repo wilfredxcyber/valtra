@@ -1,0 +1,169 @@
+.lightLanding {
+  background-color: #ffffff;
+  color: #03045e; /* deep-twilight */
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.hero {
+  text-align: center;
+  padding: 8rem 0 5rem;
+}
+
+.hero h1 {
+  margin-bottom: 1.5rem;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  color: #03045e;
+}
+
+.heroSubtitle {
+  font-size: 1.25rem;
+  color: #0077b6; /* bright-teal-blue */
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.heroActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ─── Story Section ─── */
+.storySection {
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+.storyBox {
+  background: #ffffff;
+  border: 1px solid #caf0f8; /* light-cyan */
+  border-radius: 16px;
+  padding: 3rem;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.storyBox h2 {
+  font-size: 2rem;
+  color: #03045e;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.storyBox p {
+  font-size: 1.125rem;
+  color: #0077b6;
+  line-height: 1.6;
+}
+
+/* ─── Carousel Section ─── */
+.carouselSection {
+  padding: 4rem 1.5rem 8rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.carouselSection h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: #03045e;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.carouselContainer {
+  display: flex;
+  overflow-x: auto;
+  gap: 1.5rem;
+  padding: 1rem 0 2rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carouselContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.carouselCard {
+  min-width: 300px;
+  flex: 0 0 calc(33.333% - 1rem);
+  scroll-snap-align: start;
+  background: #ffffff;
+  border: 1px solid #caf0f8;
+  border-radius: 16px;
+  padding: 2rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.carouselCard:hover {
+  border-color: #00b4d8; /* turquoise-surf */
+  box-shadow: 0 4px 12px rgba(0, 119, 182, 0.08);
+}
+
+.carouselCard h3 {
+  color: #03045e;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.carouselCard p {
+  color: #0077b6;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* ─── Tech Trust Section ─── */
+.trustSection {
+  border-top: 1px solid #caf0f8;
+  background: #fafafa;
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.trustGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.trustItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.trustItem h4 {
+  color: #03045e;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.trustItem p {
+  color: #0077b6;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+  .carouselCard {
+    flex: 0 0 calc(85%);
+  }
+}
