@@ -90,7 +90,7 @@ export async function executeHoldVaultDeposit(
     openSTXTransfer({
       network: params.network as any,
       recipient: 'ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM', // Burn/dummy address
-      amount: 1000, // 0.001 STX
+      amount: "1000", // 0.001 STX
       memo: 'Valtra Escrow Hold',
       onFinish: (data) => {
         onFinish(data.txId);
@@ -140,7 +140,7 @@ export async function executeSplitRelease(
     openSTXTransfer({
       network: params.network as any,
       recipient: params.splitAddress,
-      amount: 1000, // 0.001 STX
+      amount: "1000", // 0.001 STX
       memo: 'Valtra Escrow Split',
       onFinish: (data) => {
         onFinish(data.txId);
