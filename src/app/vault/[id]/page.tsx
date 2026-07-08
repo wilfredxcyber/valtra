@@ -163,7 +163,7 @@ export default function VaultPage() {
           </div>
           <div className="info-row">
             <span className="info-key">Total Deposited</span>
-            <span className="info-value" style={{ fontWeight: 700, color: '#03045e' }}>{totalDeposited} STX</span>
+            <span className="info-value" style={{ fontWeight: 700, color: '#03045e' }}>{totalDeposited} USDCx / $</span>
           </div>
           <div className="info-row">
             <span className="info-key">Confirmations</span>

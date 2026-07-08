@@ -107,10 +107,10 @@ export default function PartnershipPage() {
       {step === 'setup' && (
         <div className="card">
           <div className="form-group">
-            <label className="form-label">Your Deposit Share (STX)</label>
+            <label className="form-label">Your Initial Deposit (USDCx / $)</label>
             <div className="input-with-suffix">
-              <input type="number" className="form-input" placeholder="e.g. 100" value={myAmount || ''} onChange={(e) => setMyAmount(Number(e.target.value))} />
-              <span className="input-suffix">STX</span>
+              <input type="number" className="form-input" placeholder="e.g. 1000" value={myAmount || ''} onChange={(e) => setMyAmount(Number(e.target.value))} />
+              <span className="input-suffix">USDCx / $</span>
             </div>
             <span className="form-hint">Your portion only. Your partner deposits their own share via the vault link.</span>
           </div>

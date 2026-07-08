@@ -187,7 +187,7 @@ export default function GrantPoolPage() {
             {!useMilestones && (
               <div className="input-with-suffix">
                 <input type="number" className="form-input" placeholder="0" value={lumpAmount || ''} onChange={(e) => setLumpAmount(Number(e.target.value))} />
-                <span className="input-suffix">STX</span>
+                <span className="input-suffix">USDCx / $</span>
               </div>
             )}
 

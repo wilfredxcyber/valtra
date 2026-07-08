@@ -97,11 +97,12 @@ export default function TreasuryPage() {
       {step === 'setup' ? (
         <div className="card">
           <div className="form-group">
-            <label className="form-label">Initial Treasury Deposit (STX)</label>
+            <label className="form-label">Total Treasury Funding (USDCx / $)</label>
             <div className="input-with-suffix">
-              <input type="number" className="form-input" placeholder="0" value={amount || ''} onChange={(e) => setAmount(Number(e.target.value))} />
-              <span className="input-suffix">STX</span>
+              <input type="number" className="form-input" placeholder="e.g. 5000" value={amount || ''} onChange={(e) => setAmount(Number(e.target.value))} />
+              <span className="input-suffix">USDCx / $</span>
             </div>
+            <span className="form-hint">You deposit this amount into the Multi-Sig vault.</span>
           </div>
 
           <div className="form-group">
