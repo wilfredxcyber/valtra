@@ -10,7 +10,7 @@ type Step = 'setup' | 'deposited' | 'confirmed';
 export default function PartnershipPage() {
   const { isSignedIn, address, openModal, network } = useStacks();
   const [step, setStep] = useState<Step>('setup');
-  const [amount, setAmount] = useState<number>();
+  const [myAmount, setMyAmount] = useState<number>();
   const [currency, setCurrency] = useState('STX');
   const [partnerAddress, setPartnerAddress] = useState<string>('');
   const [vaultId, setVaultId] = useState<number | null>(null);
