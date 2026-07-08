@@ -21,6 +21,7 @@ export default function GrantPoolPage() {
   const [vaultId, setVaultId] = useState<number | null>(null);
   const [status, setStatus] = useState<string>('');
   const [copied, setCopied] = useState(false);
+  const [currency, setCurrency] = useState('STX');
 
   // ── Milestone mode ──
   const [useMilestones, setUseMilestones] = useState(false);
@@ -187,7 +188,14 @@ export default function GrantPoolPage() {
             {!useMilestones && (
               <div className="input-with-suffix">
                 <input type="number" className="form-input" placeholder="0" value={lumpAmount || ''} onChange={(e) => setLumpAmount(Number(e.target.value))} />
-                <span className="input-suffix">USDCx / $</span>
+                <select 
+                  className="input-suffix bg-transparent outline-none cursor-pointer border-none font-medium text-slate-500 hover:text-slate-700" 
+                  value={currency} 
+                  onChange={(e) => setCurrency(e.target.value)}
+                >
+                  <option value="STX">STX</option>
+                  <option value="USDCx">USDCx</option>
+                </select>
               </div>
             )}
 
@@ -209,14 +217,17 @@ export default function GrantPoolPage() {
                       onChange={(e) => updateMilestone(i, 'label', e.target.value)}
                       style={{ fontSize: '0.875rem' }}
                     />
-                    <input
-                      type="number"
-                      className="form-input"
-                      placeholder="0"
-                      value={m.amount || ''}
-                      onChange={(e) => updateMilestone(i, 'amount', Number(e.target.value))}
-                      style={{ fontSize: '0.875rem' }}
-                    />
+                    <div className="input-with-suffix" style={{ height: '42px' }}>
+                      <input
+                        type="number"
+                        className="form-input"
+                        placeholder="0"
+                        value={m.amount || ''}
+                        onChange={(e) => updateMilestone(i, 'amount', Number(e.target.value))}
+                        style={{ border: 'none', background: 'transparent' }}
+                      />
+                      <span className="input-suffix" style={{ background: 'transparent', paddingRight: '0.5rem', color: '#64748b' }}>{currency}</span>
+                    </div>
                     <button
                       onClick={() => removeMilestone(i)}
                       className="btn btn-ghost btn-sm"
@@ -229,12 +240,14 @@ export default function GrantPoolPage() {
                   + Add Milestone
                 </button>
                 {/* Total summary */}
-                <div style={{ marginTop: '1rem', padding: '0.75rem 1rem', background: '#f0f9ff', borderRadius: '10px', border: '1px solid #caf0f8', display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ fontWeight: 600, color: '#0077b6', fontSize: '0.875rem' }}>Total to Lock:</span>
-                  <span style={{ fontWeight: 800, color: '#03045e', fontSize: '0.9rem' }}>{totalAmount} STX</span>
+                <div className="form-group" style={{ background: '#f8fafc', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--slate-200)', marginTop: '0.5rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ fontWeight: 600, color: '#03045e' }}>Total Grant Pool:</span>
+                    <span style={{ fontSize: '1.25rem', fontWeight: 700, color: '#03045e' }}>{totalAmount} {currency}</span>
+                  </div>
                 </div>
                 <p style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '0.5rem', lineHeight: 1.5 }}>
-                  All {totalAmount} STX is locked in FlowVault at once. Community signers approve each milestone separately — funds go to the grantee stage by stage.
+                  All {totalAmount} {currency} is locked in FlowVault at once. Community signers approve each milestone separately — funds go to the grantee stage by stage.
                 </p>
               </div>
             )}

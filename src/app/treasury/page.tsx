@@ -11,6 +11,7 @@ export default function TreasuryPage() {
   const { isSignedIn, address, openModal, network } = useStacks();
   const [step, setStep] = useState<Step>('setup');
   const [amount, setAmount] = useState<number>(0);
+  const [currency, setCurrency] = useState('STX');
   const [signerAddresses, setSignerAddresses] = useState<string[]>(['', '']);
   const [vaultId, setVaultId] = useState<number | null>(null);
   const [status, setStatus] = useState<string>('');
@@ -100,7 +101,14 @@ export default function TreasuryPage() {
             <label className="form-label">Total Treasury Funding (USDCx / $)</label>
             <div className="input-with-suffix">
               <input type="number" className="form-input" placeholder="e.g. 5000" value={amount || ''} onChange={(e) => setAmount(Number(e.target.value))} />
-              <span className="input-suffix">USDCx / $</span>
+              <select 
+                className="input-suffix bg-transparent outline-none cursor-pointer border-none font-medium text-slate-500 hover:text-slate-700" 
+                value={currency} 
+                onChange={(e) => setCurrency(e.target.value)}
+              >
+                <option value="STX">STX</option>
+                <option value="USDCx">USDCx</option>
+              </select>
             </div>
             <span className="form-hint">You deposit this amount into the Multi-Sig vault.</span>
           </div>

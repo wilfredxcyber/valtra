@@ -10,6 +10,7 @@ type Step = 'setup' | 'created';
 export default function FreelancerPage() {
   const { isSignedIn, address, openModal, network } = useStacks();
   const [step, setStep] = useState<Step>('setup');
+  const [currency, setCurrency] = useState('STX');
   const [freelancers, setFreelancers] = useState<{ address: string; amount: number }[]>([{ address: '', amount: 0 }]);
   const [description, setDescription] = useState<string>('');
   const [vaultId, setVaultId] = useState<number | null>(null);
@@ -134,7 +135,14 @@ export default function FreelancerPage() {
                     value={f.amount || ''}
                     onChange={(e) => updateFreelancerAmount(i, Number(e.target.value))}
                   />
-                  <span className="input-suffix">STX</span>
+                  <select 
+                    className="input-suffix bg-transparent outline-none cursor-pointer border-none font-medium text-slate-500 hover:text-slate-700" 
+                    value={currency} 
+                    onChange={(e) => setCurrency(e.target.value)}
+                  >
+                    <option value="STX">STX</option>
+                    <option value="USDCx">USDCx</option>
+                  </select>
                 </div>
                 {freelancers.length > 1 && (
                   <button onClick={() => removeFreelancer(i)} className="btn btn-ghost btn-sm" style={{ flexShrink: 0, color: 'var(--danger)' }}>✕</button>
@@ -147,7 +155,7 @@ export default function FreelancerPage() {
           <div className="form-group" style={{ background: '#f8fafc', padding: '1rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--slate-200)' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span style={{ fontWeight: 600, color: '#03045e' }}>Total Project Cost:</span>
-              <span style={{ fontSize: '1.25rem', fontWeight: 700, color: '#03045e' }}>{totalAmount} STX</span>
+              <span style={{ fontSize: '1.25rem', fontWeight: 700, color: '#03045e' }}>{totalAmount} {currency}</span>
             </div>
           </div>
 

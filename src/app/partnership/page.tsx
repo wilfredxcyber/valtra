@@ -10,7 +10,8 @@ type Step = 'setup' | 'deposited' | 'confirmed';
 export default function PartnershipPage() {
   const { isSignedIn, address, openModal, network } = useStacks();
   const [step, setStep] = useState<Step>('setup');
-  const [myAmount, setMyAmount] = useState<number>(0);
+  const [amount, setAmount] = useState<number>();
+  const [currency, setCurrency] = useState('STX');
   const [partnerAddress, setPartnerAddress] = useState<string>('');
   const [vaultId, setVaultId] = useState<number | null>(null);
   const [status, setStatus] = useState<string>('');
@@ -110,7 +111,14 @@ export default function PartnershipPage() {
             <label className="form-label">Your Initial Deposit (USDCx / $)</label>
             <div className="input-with-suffix">
               <input type="number" className="form-input" placeholder="e.g. 1000" value={myAmount || ''} onChange={(e) => setMyAmount(Number(e.target.value))} />
-              <span className="input-suffix">USDCx / $</span>
+              <select 
+                className="input-suffix bg-transparent outline-none cursor-pointer border-none font-medium text-slate-500 hover:text-slate-700" 
+                value={currency} 
+                onChange={(e) => setCurrency(e.target.value)}
+              >
+                <option value="STX">STX</option>
+                <option value="USDCx">USDCx</option>
+              </select>
             </div>
             <span className="form-hint">Your portion only. Your partner deposits their own share via the vault link.</span>
           </div>
